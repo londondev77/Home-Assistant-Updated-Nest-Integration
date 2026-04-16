@@ -159,9 +159,9 @@ class ThermostatEntity(ClimateEntity):
         if not (trait := self._target_temperature_trait):
             return None
         if self.hvac_mode == HVACMode.HEAT:
-            return trait.heat_celsius
+            return _round_to_half(trait.heat_celsius)
         if self.hvac_mode == HVACMode.COOL:
-            return trait.cool_celsius
+            return _round_to_half(trait.cool_celsius)
         return None
 
     @property
